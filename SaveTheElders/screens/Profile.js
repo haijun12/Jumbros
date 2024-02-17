@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { SafeAreaView, View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 
 export default function Profile() {
   // Dummy user data (replace with actual user data)
@@ -18,7 +18,7 @@ export default function Profile() {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Profile</Text>
       <View style={styles.infoContainer}>
         <Text style={styles.label}>Name:</Text>
@@ -60,7 +60,7 @@ export default function Profile() {
       <TouchableOpacity style={styles.button} onPress={() => setEditing(!editing)}>
         <Text style={styles.buttonText}>{editing ? 'Save' : 'Edit'}</Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 }
 

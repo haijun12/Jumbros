@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View,SafeAreaView, Text, StyleSheet } from 'react-native';
 
 export default function Home (){
   // Dummy data for medications (replace with actual data)  
@@ -10,7 +10,7 @@ export default function Home (){
   ];
 
   return (
-  <View style={styles.container}>
+  <SafeAreaView style={styles.container}>
     <Text style={styles.title}>Today</Text>
     {medications.map((medication, index) => (
       <View key={index} style={styles.medicationContainer}>
@@ -18,7 +18,7 @@ export default function Home (){
         <Text style={styles.nextDoseTime}>{`Next dose: ${medication.nextDoseTime}`}</Text>
       </View>
     ))}
-  </View>
+  </SafeAreaView>
   );
 }
 
