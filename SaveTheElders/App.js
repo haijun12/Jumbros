@@ -22,11 +22,14 @@ export default function TabViewExample() {
   ]);
 
   return (
-    <TabView
-      navigationState={{ index, routes }}
-      renderScene={renderScene}
-      onIndexChange={setIndex}
-      initialLayout={{ width: layout.width }}
-    />
+    <View style={{ flex: 1 }}>
+      <TabView
+        navigationState={{ index, routes }}
+        renderScene={renderScene}
+        onIndexChange={setIndex}
+        initialLayout={{ width: layout.width, height: layout.height - 300 }} // Adjust height to accommodate the tab bar
+        tabBarPosition="bottom"
+      />
+    </View>
   );
 }
