@@ -2,7 +2,30 @@ import React, { useState } from 'react';
 import { View,Text, SafeAreaView, Button, StyleSheet} from 'react-native';
 
 
-const CounterButton = () => {
+export default function ManageMeds (){
+    return (
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#E6D3CD' }} >
+            {/* List view */}
+            <Text style={styles.title}> Manage Medications </Text>
+            <ItemRow number = {1} itemName = {"item"} />
+            <ItemRow number = {2} itemName = {"item 2"} />
+
+
+        </SafeAreaView>
+    )
+}
+
+function ItemRow ({ number, itemName}) {
+    return (
+    <View style={styles.container}>
+      <Text style={styles.number}>{number}</Text>
+      <Text style={styles.itemName}>{itemName}</Text>
+      <CounterButton />
+    </View>
+    );
+};
+
+function CounterButton () {
     const [count, setCount] = useState(0);
   
     const increment = () => {
@@ -16,26 +39,14 @@ const CounterButton = () => {
     };
   
     return (
-        <View style={styles.container}>
-          <View style={styles.buttonContainer}>
-            <Button title="+" onPress={increment} />
-            <Text style={styles.middleText}>{count}</Text>
-            <Button title="-" onPress={decrement} />
-          </View>
+        <View style={styles.buttonContainer}>
+        <Button title="+" onPress={increment} />
+        <Text style={styles.middleText}>{count}</Text>
+        <Button title="-" onPress={decrement} />
         </View>
       );
-  };
-export default function ManageMeds (){
-    return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: '#E6D3CD' }} >
-            {/* List view */}
-            <Text style={styles.title}>Today is</Text>
-            <CounterButton />
+};
 
-
-        </SafeAreaView>
-    )
-}
 const styles = StyleSheet.create({
     title: {
         fontSize: 24,
@@ -43,11 +54,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         marginLeft: 20,
     },
-    container: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingVertical: 20,
-      },
+
       buttonContainer: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -55,5 +62,24 @@ const styles = StyleSheet.create({
       middleText: {
         fontSize: 24,
         marginHorizontal: 10,
+      },
+      container: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingHorizontal: 16,
+        paddingVertical: 8,
+        borderBottomWidth: 1,
+        borderBottomColor: '#ccc',
+      },
+      number: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        marginRight: 8,
+      },
+      itemName: {
+        flex: 1,
+        fontSize: 16,
+        marginRight: 8,
       },
 });
