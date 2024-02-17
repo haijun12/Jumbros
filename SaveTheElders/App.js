@@ -2,6 +2,9 @@ import * as React from 'react';
 import { View, useWindowDimensions } from 'react-native';
 import { TabView, SceneMap } from 'react-native-tab-view';
 import Home from './screens/Home.js'
+import Settings from './screens/Settings.js'
+import View from './screens/View.js'
+
 
 // const FirstRoute = () => (
 //   <View style={{ flex: 1, backgroundColor: '#ff4081' }} />
@@ -12,8 +15,9 @@ const SecondRoute = () => (
 );
 
 const renderScene = SceneMap({
-  first: Home,
-  second: SecondRoute,
+  first: < Home />,
+  second: < Settings />,
+  third: < View />
 });
 
 export default function TabViewExample() {
@@ -21,8 +25,9 @@ export default function TabViewExample() {
 
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
-    { key: 'first', title: 'First' },
-    { key: 'second', title: 'Second' },
+    { key: 'first', title: 'Home' },
+    { key: 'second', title: 'Settings' },
+    { key: 'third', title: 'View'}
   ]);
 
   return (
