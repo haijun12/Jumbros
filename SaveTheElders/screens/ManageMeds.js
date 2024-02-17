@@ -1,14 +1,28 @@
 import React, { useState } from 'react';
-import { View,Text, SafeAreaView, Button, StyleSheet} from 'react-native';
+import { View, Text, SafeAreaView, Alert, Modal, Pressable, StyleSheet, Button} from 'react-native';
 
+function addItemRow (Items, AddItems) {
+    const [modalVisible, setModalVisible] = useState(false);
+    const newItemRow = (
+      <ItemRow
+        number={Items.length + 1} // Generate number dynamically
+        itemName={`Item ${Items.length + 1}`} // Generate item name dynamically
+      />
+    );
+    AddItems([...Items, newItemRow]); // Add new ItemRow to array
+};
 
 export default function ManageMeds (){
+    // DEFAULT IS [], will be changed to database later.
+    [Items, AddItems] = useState([])
+    
+
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: '#E6D3CD' }} >
             {/* List view */}
             <Text style={styles.title}> Manage Medications </Text>
-            <ItemRow number = {1} itemName = {"item"} />
-            <ItemRow number = {2} itemName = {"item 2"} />
+            {Items}
+            <Button title="Add Item" onPress ={() => addItemRow(Items, AddItems)} />
 
 
         </SafeAreaView>
