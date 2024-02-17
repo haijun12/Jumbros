@@ -27,7 +27,7 @@ export default function TabViewExample() {
         navigationState={{ index, routes }}
         renderScene={renderScene}
         onIndexChange={setIndex}
-        initialLayout={{ width: layout.width, height: layout.height - 300 }} // Adjust height to accommodate the tab bar
+        initialLayout={{ width: layout.width, height: layout.height - 100 }} // Adjust height to accommodate the tab bar
         tabBarPosition="bottom"
       />
     </View>
