@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, SafeAreaView, Alert, Modal, Pressable, StyleSheet, Button} from 'react-native';
+import { View, Text, SafeAreaView, Alert, Modal, Pressable, StyleSheet, Button, TextInput} from 'react-native';
+
 
 function addItemRow (Items, AddItems) {
     const [modalVisible, setModalVisible] = useState(false);
@@ -22,7 +23,8 @@ export default function ManageMeds (){
             {/* List view */}
             <Text style={styles.title}> Manage Medications </Text>
             {Items}
-            <Button title="Add Item" onPress ={() => addItemRow(Items, AddItems)} />
+            {/* <Button title="Add Item" onPress ={() => addItemRow(Items, AddItems)} /> */}
+            <EditItem />
 
 
         </SafeAreaView>
@@ -60,6 +62,78 @@ function CounterButton () {
         </View>
       );
 };
+
+function EditItem (Items, AddItems) {
+  const [modalVisible, setModalVisible] = useState(false);
+  const [medicationName, setMedicationName] = useState('');
+  const [pillsPerDay, setPillsPerDay] = useState(0);
+  const [notificationTime, setNotificationTime] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [frequency, setFrequency] = useState('');
+  const [duration, setDuration] = useState('');
+
+  const handleAddMedication = () => {
+    // Add the new medication to the list
+    // Logic to save medication data goes here
+    // For example, you can save it to a database or state
+    // console.log({
+    //   medicationName,
+    //   pillsPerDay,
+    //   notificationTime,
+    //   startDate,
+    //   frequency,
+    //   duration
+    // });
+    // Reset the form
+    setMedicationName('');
+    setPillsPerDay(0);
+    setNotificationTime('');
+    setStartDate('');
+    setFrequency('');
+    setDuration('');
+    setModalVisible(false);
+  };
+
+  return (
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#E6D3CD' }}>
+      {/* List view */}
+      {/* Add modal popup for adding medication */}
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            {/* Medication Name */}
+            <TextInput
+              style={styles.input}
+              placeholder="Medication Name"
+              value={medicationName}
+              onChangeText={setMedicationName}
+            />
+            {/* Number of Pills Per Day */}
+            <ItemRow itemName="Number of Pills" count={pillsPerDay} setCount={setPillsPerDay} />
+            {/* Notification Time */}
+            <ItemRow itemName="Notification Time" count={notificationTime} setCount={setNotificationTime} />
+            {/* Start Date */}
+            <ItemRow itemName="Start Date" count={startDate} setCount={setStartDate} />
+            {/* Frequency */}
+            <ItemRow itemName="Frequency" count={frequency} setCount={setFrequency} />
+            {/* Duration */}
+            <ItemRow itemName="Duration" count={duration} setCount={setDuration} />
+            {/* Add Medication Button */}
+            <Button title="Add Medication" onPress={handleAddMedication} />
+          </View>
+        </View>
+      </Modal>
+      <Button title="Add Medication" onPress={() => setModalVisible(true)} />
+    </SafeAreaView>
+  );
+}
 
 const styles = StyleSheet.create({
     title: {
