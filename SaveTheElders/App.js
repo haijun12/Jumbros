@@ -18,7 +18,7 @@ export default function TabViewExample() {
   const [routes] = React.useState([
     { key: 'first', title: 'Home' },
     { key: 'second', title: 'Profile' },
-    { key: 'third', title: 'Manage'}
+    { key: 'third', title: 'Manage' }
   ]);
 
   return (
