@@ -2,12 +2,12 @@ import * as React from 'react';
 import { View, useWindowDimensions } from 'react-native';
 import { TabView, SceneMap } from 'react-native-tab-view';
 import Home from './screens/Home.js'
-import Settings from './screens/Settings.js'
+import Profile from './screens/Profile.js'
 import ManageMeds from './screens/ManageMeds.js'
 
 const renderScene = SceneMap({
   first: Home,
-  second: Settings,
+  second: Profile,
   third: ManageMeds
 });
 
@@ -17,7 +17,7 @@ export default function TabViewExample() {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     { key: 'first', title: 'Home' },
-    { key: 'second', title: 'Settings' },
+    { key: 'second', title: 'Profile' },
     { key: 'third', title: 'Manage'}
   ]);
 
